@@ -1,0 +1,111 @@
+
+
+<div class="div_add"><button class="btn btn-success float-left"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button></div>
+
+<table class="table mt-3">
+    <thead>
+        <tr >
+            <th scope="col">Employee Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Mobile No.</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Edit Emp.</th>
+            <th scope="col">Delete Emp.</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeeData">
+          <td> {{row.employee_id}} </td>
+          <td> {{row.first_name}} </td>
+          <td> {{row.last_name}} </td>
+          <td> {{row.email}} </td>
+          <td> {{row.phone_number}} </td>
+          <td> {{row.salary}} </td>
+          <td><button  (click)="onEdit(row)" class="btn btn-info"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+          <td><button type="button" class="btn btn-danger mx-3" (click)="deleteEmployee(row)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">First Name</label>
+                  <input formControlName="first_name"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                  <span class="text-danger"
+                    *ngIf="(registerFormControl['first_name'].touched || submitted) && registerFormControl['first_name'].errors?.['required']">
+                        First Name is required
+                  </span>
+                 
+                    <!-- <div *ngIf=" ['registerFormControl.first_name.errors?.required']" class="text-danger"> Username is required </div> -->
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                  <input formControlName="last_name" type="text" class="form-control" id="exampleInputPassword1">
+                  <span class="text-danger"
+                    *ngIf="(registerFormControl['last_name'].touched || submitted) && registerFormControl['last_name'].errors?.['required']">
+                      Last Name is required
+                  </span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email ID</label>
+                    <input formControlName="email" type="email" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger"
+                              *ngIf="(registerFormControl['email'].touched || submitted) && registerFormControl['email'].errors?.['required']">
+                               Email is required
+                    </span>
+                    <span class="text-danger"
+                                *ngIf="registerFormControl['email'].touched && registerFormControl['email'].errors?.['email']">
+                                Enter a valid email address
+                    </span>
+                </div>
+                
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
+                    <input formControlName="phone_number" type="number" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger"
+                              *ngIf="(registerFormControl['phone_number'].touched || submitted) && registerFormControl['phone_number'].errors?.['required']">
+                               Phone Number is required
+                    </span>
+                    <span class="text-danger"
+                                *ngIf="registerFormControl['phone_number'].touched && registerFormControl['phone_number'].errors?.['pattern']">
+                                Enter 10 Digit phone number
+                    </span>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Salary</label>
+                    <input formControlName="salary" type="number" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger"
+                              *ngIf="(registerFormControl['salary'].touched || submitted) && registerFormControl['salary'].errors?.['required']">
+                               Salary is required
+                    </span>
+                  </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button *ngIf=" showButton " type="button" class="btn btn-primary" (click)="postEmployeeDetails()" id="liveToastBtn">Submit</button>
+          <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateEmployeeDetails()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

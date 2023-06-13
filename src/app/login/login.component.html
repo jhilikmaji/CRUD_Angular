@@ -1,0 +1,49 @@
+<section class="vh-50 gradient-custom">
+    <div class="container py-4 h-50">
+      <div class="row d-flex justify-content-center align-items-center h-50">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card text-white" style="border-radius: 1rem;">
+            <div class="card-body p-3 text-center">
+  
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-md-5 mt-md-4 pb-5">
+  
+                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                  <p class="text-white-50 mb-5">Please enter your login and password!</p>
+    
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="typeEmailX">Email</label>
+                    <input formControlName="user_email" type="email" id="typeEmailX" class="form-control form-control-lg" />
+                    <span class="text-danger"
+                    *ngIf="(loginFormControl['user_email'].touched || submitted) && loginFormControl['user_email'].errors?.['required']">
+                        Email is required
+                  </span>
+                  </div>
+    
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="typePasswordX">Password</label>
+                    <input formControlName="user_password" type="password" id="typePasswordX" class="form-control form-control-lg" />
+                    <span class="text-danger"
+                    *ngIf="(loginFormControl['user_password'].touched || submitted) && loginFormControl['user_password'].errors?.['required']">
+                        password is required
+                  </span>
+                   
+                  </div>
+    
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!loginForm.valid">Login</button>
+                
+                
+    
+                </div>
+
+                <div class="text-center text-white" *ngIf="successsMessage">{{successsMessage}}</div>
+              </form>
+  
+             
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

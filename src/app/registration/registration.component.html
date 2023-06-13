@@ -1,0 +1,74 @@
+<section class="vh-30 gradient-custom">
+    <div class="container py-4 h-10">
+      <div class="row d-flex justify-content-center align-items-center h-10">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card text-white" style="border-radius: 1rem;">
+            <div class="card-body p-3 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <form [formGroup]="regform" (ngSubmit)="register()">
+                  <h2 class="fw-bold mb-2 text-uppercase">Registration</h2>
+              
+                
+                  <div class="form-outline form-white mb-3">
+                      <label class="form-label" for="typeEmailX">User Name</label>
+                      <input formControlName="user_name"  type="text" id="typeusernameX" class="form-control form-control-lg" />
+                      <span class="text-white"
+                    *ngIf="(regFormControl['user_name'].touched || regsubmitted) && regFormControl['user_name'].errors?.['required']">
+                        User Name is required
+                  </span>
+                  </div>
+  
+                  <div class="form-outline form-white mb-3">
+                      <label class="form-label" for="typeEmailX">Email</label>
+                    <input formControlName="user_email"  type="email" id="typeEmailX" class="form-control form-control-lg" />
+                    <span class="text-white"
+                    *ngIf="(regFormControl['user_email'].touched || regsubmitted) && regFormControl['user_email'].errors?.['required']">
+                        Email is required
+                  </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Adress line 1</label>
+                    <input formControlName="address" type="text" class="form-control">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Adress line 2</label>
+                    <input formControlName="addressTwo" type="text" class="form-control">
+                  </div>
+    
+                  <div class="form-outline form-white mb-3">
+                      <label class="form-label" for="typePasswordX">Password</label>
+                    <input formControlName="user_password"  type="password" id="typePasswordX" class="form-control form-control-lg" />
+                    <span class="text-white"
+                    *ngIf="(regFormControl['user_password'].touched || regsubmitted) && regFormControl['user_password'].errors?.['required']">
+                        Password is required
+                  </span>
+                  </div>
+                  <div class="form-outline form-white mb-3">
+                      <label class="form-label" for="typePasswordX">Confirm Password</label>
+                    <input formControlName="user_con_password"  type="password" id="typeConPasswordX" class="form-control form-control-lg" />
+                    <span class="text-white"
+                    *ngIf="(regFormControl['user_con_password'].touched || regsubmitted) && regFormControl['user_con_password'].errors?.['required']">
+                        confirm password is required
+                  </span>
+                  </div>
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!regform.valid">Submit</button>
+                  <div class="text-white" *ngIf="successsMessage"> {{successsMessage}} </div>
+                </form>
+  
+              </div>
+  
+              <!-- <div>
+                <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                </p>
+              </div> -->
+  
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

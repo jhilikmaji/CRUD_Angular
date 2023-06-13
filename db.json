@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 4,
+      "firstName": "test2",
+      "lastName": "testtwo",
+      "email": "testtow@dminc.com",
+      "mobile": 789654321,
+      "salary": 25000
+    },
+    {
+      "id": 5,
+      "firstName": "testthreee",
+      "lastName": "testthree",
+      "email": "test@gmail.com",
+      "mobile": 123456789,
+      "salary": 120000
+    },
+    {
+      "id": 6,
+      "firstName": "test4",
+      "lastName": "test4",
+      "email": "test4@gmail.com",
+      "mobile": 1234567890,
+      "salary": 23000
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
